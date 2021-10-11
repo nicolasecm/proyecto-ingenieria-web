@@ -1,9 +1,16 @@
 <style type="text/css">
 *
+{
+margin: 0;
+padding: 0;
+overflow: hidden;
+transition: 0.5s;
+font-family: 'Jost', sans-serif;
+}
 header
 {
 width: 100vw;
-height: 80vh;
+height: 100vh;
 background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
 }
 
@@ -14,7 +21,8 @@ background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
 <div class="col-4 mt-5"></div>
 <div class="card col-4 mt-5 text-center d-flex justify-content-center align-items-center">
   <div class="card-title">
-    <h2 align="center">Ingreso</h2>
+    <% usuario =  resource_name.to_s == "user" ? "Usuario" : "Empresa" %>
+    <h2 align="center">Ingreso <%= usuario%></h2>
   </div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

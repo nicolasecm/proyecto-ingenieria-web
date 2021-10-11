@@ -28,7 +28,7 @@ en:
       password_change:
         subject: "Contraseña modificada"
     omniauth_callbacks:
-      failure: "No se ha podido autentificar a la persona de %{kind} porque "%{reason}"."
+      failure: "No se ha podido autentificar a la persona de %{kind} porque '%{reason}''."
       success: "Autenticado con éxito desde la cuenta %{kind}."
     passwords:
       no_token: "No puedes acceder a esta página si no vienes de un correo electrónico de restablecimiento de contraseña. Si viene de un correo electrónico de restablecimiento de contraseña, asegúrese de que ha utilizado la URL completa proporcionada."
