@@ -16,7 +16,11 @@
   </head>
 
   <body>
+   <%if owner_company_signed_in?%>
     <%= render "partials/nav" %>
+   <%elsif user_signed_in?%>
+   <%= render "partials/nav" %>
+   <%end%>
     <div class="container-fluid">
       <% flash.each do |name, msg|%>
         <div class="alert <%=bootstrap_flash_class(name)%> mt-2" id="flash">
