@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :companies
-  resources :payment_methods
   devise_for :owner_companies, path: 'users', controllers:{
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -10,12 +8,13 @@ Rails.application.routes.draw do
     sessions: "owner_companies/sessions",
     registrations: "owner_companies/registrations"
   }
+  resources :categories
+  resources :companies
+  resources :payment_methods
 
   devise_scope :user do
     authenticated :user do
       namespace :users do
-        match 'dashboard/index', as: :authenticated_root, :via =>[:get, :post]
-        resources :categories
       end
     end
   end
@@ -23,8 +22,6 @@ Rails.application.routes.draw do
   devise_scope :owner_companies do
     authenticated :owner_companies do
       namespace :owner_companies do
-        match 'dashboard/index', as: :authenticated_root, :via =>[:get, :post]
-        resources :categories
       end
     end
   end
