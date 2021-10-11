@@ -1,0 +1,31 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#212529;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarScroll">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class = "nav-item"><%= link_to "Inicio", root_path, class:"nav-link nav_item_link" %></li>
+        <% if user_signed_in? %>
+            <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class:"nav-link nav_item_link" %></li>
+        <% elsif owner_company_signed_in? %>
+            <li><%= link_to "Cerrar Sesion", destroy_owner_company_session_path, method: :delete, class:"nav-link nav_item_link" %></li>
+        <% else %>
+          <div class="d-flex ">
+            <li class = "nav-item ">
+              <%= link_to "Iniciar Sesion Usuario", new_user_session_path, class:"nav-link nav_item_link" %>
+            </li>
+            <li class = "nav-item">
+              <%= link_to "Registro Usuario", new_user_registration_path, class:"nav-link nav_item_link" %>
+            </li>
+            <li class = "nav-item ">
+              <%= link_to "Iniciar Sesion Dueño Empresa", new_owner_company_session_path, class:"nav-link nav_item_link" %>
+            </li>
+            <li class = "nav-item">
+              <%= link_to "Registro Dueño Empresa", new_owner_company_registration_path, class:"nav-link nav_item_link" %>
+            </li>
+          </div>
+        <%end%>
+      </ul>
+  </div>
+</nav>
