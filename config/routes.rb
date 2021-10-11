@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :companies
+  resources :payment_methods
+  resources :categories
   devise_for :owner_companies, path: 'users', controllers:{
     sessions: "users/sessions",
     registrations: "users/registrations"

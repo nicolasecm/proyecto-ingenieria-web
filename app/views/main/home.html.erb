@@ -1,9 +1,9 @@
 <% if owner_company_signed_in? %>
     <div class="d-flex justify-content-center">
         <h2>Bienvenido a la creacion de empresas</h2>
-        
         <%= current_owner_company.first_name%>
     </div>
+    <%= link_to 'Crear compañia', new_company_path, class:"btn btn-secondary" %>
 <% elsif user_signed_in? %>
     <div class="d-flex justify-content-center">
         <h2>Aca podras ver los productos publicados por las empresas</h2>
