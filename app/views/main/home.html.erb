@@ -1,14 +1,12 @@
 
 <% if owner_company_signed_in? %>
     <div class="d-flex justify-content-center">
-        <h2>Bienvenido a la creacion de empresas</h2>
-        
+        <h2>Bienvenido a la creacion de empresas</h2>      
     </div>
     <div class="d-flex justify-content-center">
         <%= link_to 'Crear compañia', new_company_path, class:"btn btn-secondary" %>
     </div>
 <% elsif user_signed_in? %>
-       <h2>Aqui se pueden ver algunos de los productos </h2><br>
     </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
