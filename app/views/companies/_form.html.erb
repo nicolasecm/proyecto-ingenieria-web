@@ -12,46 +12,48 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label "Nombre"%>
+    <%= form.text_field :name, class:"form-control", required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :adress %>
-    <%= form.text_field :adress %>
+    <%= form.label "Direccion" %>
+    <%= form.text_field :adress, class:"form-control", required: true%>
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+    <%= form.label "Categoria"%>
+    <%= form.select :category_id, Category.all.map{|u| [u.name, u.id]}, {include_blank: true}, class:"form-select", required: true%>
   </div>
 
   <div class="field">
-    <%= form.label :payment_method_id %>
-    <%= form.text_field :payment_method_id %>
+    <%= form.label "Metodos de pago" %>
+    <%= form.select :payment_method_id, PaymentMethod.all.map{|u| [u.name, u.id]}, {include_blank: true}, class:"form-select", required: true%>
+  </div>
+
+  <%= form.hidden_field :owner_company_id , value: current_owner_company.id, required: true%>
+
+  <div class="field">
+    <%= form.label "Celular" %>
+    <%= form.number_field :phone, class:"form-control", required: true%>
   </div>
 
   <div class="field">
-    <%= form.label :phone %>
-    <%= form.number_field :phone %>
+    <%= form.label "Horario" %>
+    <%= form.text_field :schedule, class:"form-control", required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :schedule %>
-    <%= form.text_field :schedule %>
+    <%= form.label "Correo" %>
+    <%= form.text_field :email, class:"form-control", required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
+    <%= form.label "Estado" %>
     <%= form.check_box :status %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Crear Compañia", class:"btn btn-success" %>
   </div>
 <% end %>
