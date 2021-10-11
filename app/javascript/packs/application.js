@@ -11,3 +11,9 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$('document').ready(function() {
+    setTimeout(function() {
+      $('#flash').slideUp();
+    }, 5000);
+  });

@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, error: 'La compañia ha sido creada satisfactoriamente' }
+        format.html { redirect_to @company, success: 'La compañia ha sido creada satisfactoriamente' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, error: 'La compañia ha sido actualizada satisfactoriamente' }
+        format.html { redirect_to @company, notice: 'La compañia ha sido actualizada satisfactoriamente' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit, status: :unprocessable_entity }
