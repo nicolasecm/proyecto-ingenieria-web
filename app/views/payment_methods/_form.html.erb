@@ -12,16 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status %>
+    <%= form.label "Nombre"%>
+    <%= form.text_field :name, class:"form-control", required: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Guardar", class:"btn btn-success my-2" %>
   </div>
 <% end %>
