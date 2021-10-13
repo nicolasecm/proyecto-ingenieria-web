@@ -9,10 +9,10 @@ en:
     failure:
       already_authenticated: "Ya has iniciado la sesión."
       inactive: "Su cuenta aún no está activada."
-      invalid: "%{authentication_keys} o contraseña inválidos."
+      invalid: "'%{authentication_keys}' o contraseña inválidos."
       locked: "Su cuenta está bloqueada."
       last_attempt: "Tienes un intento más antes de que se bloquee tu cuenta."
-      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      not_found_in_database: "'%{authentication_keys}' o contraseña inválidos."
       timeout: "Su sesión ha expirado. Por favor, inicie sesión de nuevo para continuar."
       unauthenticated: "Tienes que iniciar sesión o registrarte antes de continuar."
       unconfirmed: "Tienes que confirmar tu dirección de correo electrónico antes de continuar."
@@ -28,8 +28,8 @@ en:
       password_change:
         subject: "Contraseña modificada"
     omniauth_callbacks:
-      failure: "No se ha podido autentificar a la persona de %{kind} porque '%{reason}''."
-      success: "Autenticado con éxito desde la cuenta %{kind}."
+      failure: "No se ha podido autentificar a la persona de '%{kind}' porque '%{reason}'."
+      success: "Autenticado con éxito desde la cuenta '%{kind}'."
     passwords:
       no_token: "No puedes acceder a esta página si no vienes de un correo electrónico de restablecimiento de contraseña. Si viene de un correo electrónico de restablecimiento de contraseña, asegúrese de que ha utilizado la URL completa proporcionada."
       send_instructions: "En unos minutos recibirás un correo electrónico con instrucciones para restablecer tu contraseña."
@@ -56,10 +56,10 @@ en:
   errors:
     messages:
       already_confirmed: "ya fue confirmado, por favor intente ingresar"
-      confirmation_period_expired: "necesita ser confirmado dentro del %{período}, por favor solicite uno nuevo"
+      confirmation_period_expired: "necesita ser confirmado dentro del '%{periodo}', por favor solicite uno nuevo"
       expired: "ha caducado, solicite uno nuevo"
       not_found: "no encontrado"
       not_locked: "no estaba bloqueado"
       not_saved:
-        one: "1 error ha impedido que este %{recurso} se guarde:"
-        other: "Los errores de %{count} prohibieron que este %{recurso} se guardara:"
+        one: "1 error ha impedido que este '%{resource}' se guarde:"
+        other: "Los errores de '%{count}' prohibieron que este '%{resource}' se guardara:"

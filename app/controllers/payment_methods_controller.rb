@@ -25,7 +25,7 @@ class PaymentMethodsController < ApplicationController
 
     respond_to do |format|
       if @payment_method.save
-        format.html { redirect_to @payment_method, success: 'El metodo de pago ha sido creada satisfactoriamente' }
+        format.html { redirect_to payment_methods_url, success: 'El metodo de pago ha sido creada satisfactoriamente' }
         format.json { render :show, status: :created, location: @payment_method }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class PaymentMethodsController < ApplicationController
   def update
     respond_to do |format|
       if @payment_method.update(payment_method_params)
-        format.html { redirect_to @payment_method, notice: 'El metodo de pago ha sido actualizada satisfactoriamente' }
+        format.html { redirect_to payment_methods_url, notice: 'El metodo de pago ha sido actualizada satisfactoriamente' }
         format.json { render :show, status: :ok, location: @payment_method }
       else
         format.html { render :edit, status: :unprocessable_entity }

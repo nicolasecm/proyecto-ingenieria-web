@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to companies_url, success: 'La compañia ha sido creada satisfactoriamente' }
+        format.html { redirect_to companies_url, success: 'La empresa ha sido creada satisfactoriamente' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to companies_url, notice: 'La compañia ha sido actualizada satisfactoriamente' }
+        format.html { redirect_to companies_url, notice: 'La empresa ha sido actualizada satisfactoriamente' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_url, error: 'La compañia ha sido eliminado satisfactoriamente' }
+      format.html { redirect_to companies_url, error: 'La empresa ha sido eliminado satisfactoriamente' }
       format.json { head :no_content }
     end
   end
