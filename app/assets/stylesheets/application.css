@@ -57,6 +57,42 @@
     transition: all linear 0.25s;
 }
 
+.profile-card-2 .profile-direction {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    color: #FFF;
+    font-size: 13px;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-phone {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: #FFF;
+    font-size: 13px;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-schedule {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    color: #FFF;
+    font-size: 13px;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-category {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    color: #FFF;
+    font-size: 13px;
+    transition: all linear 0.25s;
+}
+
 .profile-card-2 .profile-icons .fa {
     margin: 5px;
 }

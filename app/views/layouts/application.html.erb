@@ -10,43 +10,43 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css">
-   </head>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css">
+  </head>
   <body>
-  <div class="container-fluid">
-    <div class="row flex-nowrap">
-      <%if owner_company_signed_in?%>
-        <%= render "partials/sidebar" %>
-        <% tamcol = 9%>
-      <%elsif user_signed_in?%>
-        <%= render "partials/sidebar" %>
-        <% tamcol = 9%>
-      <% else %>
-        <% tamcol = 12%>
-      <%end%>
-      <div class="col-<%=tamcol%>">
-        <div class="container-fluid">
-          <% flash.each do |name, msg|%>
-            <div class="alert <%=bootstrap_flash_class(name)%> mt-2" id="flash">
-              <%= msg%>
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        
+          <%if owner_company_signed_in?%>
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+              <%= render "partials/sidebar" %>
+            </div>
+          <%elsif user_signed_in?%>
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+              <%= render "partials/sidebar" %>
             </div>
           <%end%>
-          <%= yield %> 
+        
+        <div class="col py-3">
+          <div class="container-fluid">
+            <% flash.each do |name, msg|%>
+              <div class="alert <%=bootstrap_flash_class(name)%> mt-2" id="flash">
+                <%= msg%>
+              </div>
+            <%end%>
+            <%= yield %> 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
   </body>
 </html>
 
 <style>
 body
 {
-width: 90vw;
-height: 80vh;
+width: 100vw;
+height: 100vh;
 background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
 }
 </style>

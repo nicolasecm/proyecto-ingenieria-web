@@ -5,17 +5,24 @@
     <div class="d-flex justify-content-center">
         <%= link_to 'Crear empresa', new_company_path, class:"btn btn-secondary my-2" %>
     </div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-4">
-    <h4 class="text-center"><strong>STYLE 1</strong></h4>
-    <hr>
-    <div class="profile-card-2"><img src="/images/makeup.jpg" class="img img-responsive">
-        <div class="profile-name">JOHN DOE</div>
-        <div class="profile-username">@johndoesurname</div>
-        <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+    <div class="container">
+        <div class="row">
+            <% @companies = Company.where(owner_company_id: current_owner_company.id)%>
+            <% if @companies.any?%>
+                <% @companies.each do |com|%>
+                    <div class="col-md-4">
+                        <div class="profile-card-2"><img src="/images/compania.jpg" width="350" height="500"class="img img-responsive">
+                            <div class="profile-name"><%= com.name%></div>
+                            <div class="profile-category">Categoria: <%= com.category.name  %></div>
+                            <div class="profile-direction">Direccion: <%= com.adress%></div>
+                            <div class="profile-phone">Celular: <%= com.phone %></div>
+                            <div class="profile-schedule">Horario: <%= com.schedule %></div>
+                        </div>
+                    </div>
+                <%end%>
+            <%end%>
+        </div>
     </div>
-</div>
 
 
 <% elsif user_signed_in? %>
