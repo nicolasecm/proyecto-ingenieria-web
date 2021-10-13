@@ -19,12 +19,12 @@
     <div class="row flex-nowrap">
       <%if owner_company_signed_in?%>
         <%= render "partials/sidebar" %>
-        <%= tamcol = 9%>
+        <% tamcol = 9%>
       <%elsif user_signed_in?%>
         <%= render "partials/sidebar" %>
-        <%= tamcol = 9%>
+        <% tamcol = 9%>
       <% else %>
-        <%= tamcol = 12%>
+        <% tamcol = 12%>
       <%end%>
       <div class="col-<%=tamcol%>">
         <div class="container-fluid">
@@ -43,17 +43,10 @@
 </html>
 
 <style>
-{
-margin: 0;
-padding: 0;
-overflow: hidden;
-transition: 0.5s;
-font-family: 'Jost', sans-serif;
-}
 body
 {
 width: 100vw;
-height: 100vh;
+height: 80vh;
 background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
 }
 </style>
