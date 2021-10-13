@@ -9,9 +9,9 @@
 body{
   min-height: 100vh;
   display: flex;
-  align-items:center;
-  justify-content: center;
+  align-items: center;
   background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
+  justify-content: center;
   padding: 30px;
 }
 .container{
@@ -220,9 +220,9 @@ body{
       </div>
     </div>
     <div class="forms">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-content">
           <div class="login-form">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <% usuario =  resource_name.to_s == "user" ? "Usuario" : "Empresa" %>
             <div class="title">Iniciar Sesion de <%= usuario%> </div>
           <form action="#">
@@ -241,11 +241,11 @@ body{
               <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
               <div class="text sign-up-text">¿Aún no tienes cuenta?  <%= link_to "¡Registrate!", new_registration_path(resource_name)%><br /></div>
               <% end %>
-
             </div>
         </form>
       </div>
-    <%end%>
+      <%end%>
+    </div>
     </div>
     </div>
   </div>
