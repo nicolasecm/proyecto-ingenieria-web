@@ -61,5 +61,5 @@ en:
       not_found: "no encontrado"
       not_locked: "no estaba bloqueado"
       not_saved:
-        one: "1 error ha impedido que este '%{resource}' se guarde:"
-        other: "Los errores de '%{count}' prohibieron que este '%{resource}' se guardara:"
+        one: "1 error ha impedido que se completara el registro:"
+        other: "%{count} han impedido que se completara el registro:"
