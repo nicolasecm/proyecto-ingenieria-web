@@ -53,10 +53,18 @@
     bottom: 50px;
     left: 30px;
     color: #FFF;
-    font-size: 13px;
+    font-size: 16px;
     transition: all linear 0.25s;
 }
 
+.profile-card-2 .profile-text {
+    position: absolute;
+    bottom: 40px;
+    left: 32px;
+    color: #FFF;
+    font-size: 14px;
+    transition: all linear 0.25s;
+}
 .profile-card-2 .profile-direction {
     position: absolute;
     bottom: 40px;
@@ -109,6 +117,9 @@
     bottom: 60px;
 }
 
+.profile-card-2:hover .profile-text {
+    bottom: 50px;
+}
 .profile-card-2:hover .profile-icons {
     right: 40px;
 }
