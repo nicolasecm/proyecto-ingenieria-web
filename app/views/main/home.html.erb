@@ -6,7 +6,6 @@
     <div class="d-flex justify-content-center">
         <%= link_to 'Crear empresa', new_company_path, class:"btn btn-secondary my-2" %>
     </div>
-<<<<<<< Updated upstream
     <div class="container">
         <div class="row">
             <% @companies = Company.where(owner_company_id: current_owner_company.id)%>
@@ -26,8 +25,6 @@
         </div>
     </div>
 </div>
-=======
->>>>>>> Stashed changes
 <% elsif user_signed_in? %>
     <div class="d-flex justify-content-center">
         <h1>Hola! <%= current_user.first_name%> estas son las categorias que tenemos para ti:</h1>  

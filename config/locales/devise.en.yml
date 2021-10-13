@@ -1,6 +1,35 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
 en:
+  activerecord:
+    attributes:
+      category:
+        name: 'Nombre'
+      payment_method:
+        name: 'Nombre'
+      company:
+        name: 'Nombre'
+      owner_company:
+        email: 'Correo'
+        name: 'Email'
+        password: 'Contraseña'
+    errors:
+      models:
+        user:
+          blank: 'es requerido'
+          taken: 'ya esta en uso'
+        company:
+          blank: 'es requerido'
+          taken: 'ya esta en uso'
+        category:
+          blank: 'es requerido'
+          taken: 'ya esta en uso'
+        payment_method:
+          blank: 'es requerido'
+          taken: 'ya esta en uso'
+        owner_company:
+          blank: 'es requerido'
+          taken: 'ya esta en uso'
   devise:
     confirmations:
       confirmed: "Su dirección de correo electrónico ha sido confirmada con éxito."
