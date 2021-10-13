@@ -12,12 +12,10 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap  
  */
 h1{
     color:white;
 }
-
 
 .btn{
     color: white !important;

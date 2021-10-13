@@ -19,10 +19,14 @@
     <div class="row flex-nowrap">
       <%if owner_company_signed_in?%>
         <%= render "partials/sidebar" %>
+        <%= tamcol = 9%>
       <%elsif user_signed_in?%>
         <%= render "partials/sidebar" %>
+        <%= tamcol = 9%>
+      <% else %>
+        <%= tamcol = 12%>
       <%end%>
-      <div class="col-9">
+      <div class="col-<%=tamcol%>">
         <div class="container-fluid">
           <% flash.each do |name, msg|%>
             <div class="alert <%=bootstrap_flash_class(name)%> mt-2" id="flash">
@@ -49,7 +53,7 @@ font-family: 'Jost', sans-serif;
 body
 {
 width: 100vw;
-height: 80vh;
+height: 100vh;
 background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
 }
 </style>
