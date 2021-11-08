@@ -1,0 +1,41 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div class="alert alert-danger mt-2" id="flash">
+      <p><%= pluralize(product.errors.count, "error") %> no se pudo crear la empresa por: </p>
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if params[:company_id].present? %>
+    <div class="field">
+      <%= form.hidden_field :company_id, value: params[:company_id]%>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :company_id, "Compañia"%>
+      <<%= form.select :company_id, Company.where(owner_company_id: current_owner_company.id).map{|u| [u.name, u.id]}, {include_blank: true}, class:"form-select", required: true%>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Nombre"%>
+    <%= form.text_field :name, class:"form-control", required: true %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :price, "Precio del producto" %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_product, "Imagen del producto" %>
+    <%= form.file_field :image_product, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar", class:"btn btn-success my-2" %>
+  </div>
+<% end %>

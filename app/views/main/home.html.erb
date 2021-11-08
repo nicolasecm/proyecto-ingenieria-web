@@ -11,20 +11,23 @@
             <% @companies = Company.where(owner_company_id: current_owner_company.id)%>
             <% if @companies.any?%>
                 <% @companies.each do |com|%>
-                    <div class="col-md-4">
-                        <div class="profile-card-2"><img src="/images/compania.jpg" width="350" height="500"class="img img-responsive">
-                            <div class="profile-name"><%= com.name%></div>
-                            <div class="profile-category">Categoria: <%= com.category.name  %></div>
-                            <div class="profile-direction">Direccion: <%= com.adress%></div>
-                            <div class="profile-phone">Celular: <%= com.phone %></div>
-                            <div class="profile-schedule">Horario: <%= com.schedule %></div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="advisor_thumb"><img src="/images/compania.jpg" width="350" height="350" class="img img-responsive">
+                            </div>
+                            <div class="single_advisor_details_info">
+                                <h6><%= com.name%></h6>
+                                <p class="designation">Categoria: <%= com.category.name  %></p>
+                                <p class="designation">Direccion: <%= com.adress%></p>
+                                <p class="designation">Celular: <%= com.phone %></p>
+                                <p class="designation">Horario: <%= com.schedule %></p>
+                            </div>
                         </div>
                     </div>
                 <%end%>
             <%end%>
         </div>
     </div>
-</div>
 <% elsif user_signed_in? %>
     <div class="d-flex justify-content-center">
         <h1>Hola! <%= current_user.first_name%> estas son las categorias que tenemos para ti:</h1>  
@@ -33,134 +36,130 @@
     <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-    <div class="profile-card-2"><img src="/images/makeup.jpg" class="img img-responsive">
-        <div class="profile-name">Belleza</div>
-        <div class="profile-username">Maquillaje, accesorios y más!</div>
-    </div>
-</div>
-		<div class="col-md-4">
-        <div class="profile-card-2"><img src="/images/tecnologia.jpg" class="img img-responsive">
-        <div class="profile-name">Tecnología</div>
-        <div class="profile-username">Computadores, tables y accesorios</div>
-   </div>
-</div>
-    <div class="col-md-4">
-    <div class="profile-card-2"><img src="/images/comida.jpg" class="img img-responsive">
-        <div class="profile-name">Comida</div>
-        <div class="profile-username">Encuentra platos de todo tipo!</div>
- </div>
-</div>
-
- <div class="col-md-4">
-    <div class="profile-card-2"><img src="/images/ellas.jpg" class="img img-responsive">
-        <div class="profile-name">Ropa</div>
-        <div class="profile-username">Para ellas</div>
- </div>
-</div>
-
-<div class="col-md-4">
-    <div class="profile-card-2"><img src="/images/ellos.jpg" class="img img-responsive">
-        <div class="profile-name">Ropa</div>
-        <div class="profile-username">Para ellos</div>
- </div>
-</div>
-
-<div class="col-md-4">
-    <div class="profile-card-2"><img src="/images/cuidado_personal.jpg" class="img img-responsive">
-        <div class="profile-name">Cuidado Personal</div>
-        <div class="profile-text">Encuentra todo lo que tenemos para ofrecerte en cuidado personal</div>
- </div>
-</div>
-<% else %>
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-</head>
-<style type="text/css">
-*
-.container
-{
-width: 1200px;
-height: auto;
-display: flex;
-margin-top: 150px;
-}
-.container h1
-{
-color: #fff;
-font-size: 60px;
-font-weight: 400;
-padding-top: 100px;
-}
-.container span
-{
-font-weight: bold;
-}
-.container p
-{
-color: #fff;
-line-height: 25px;
-padding-top: 10px;
-font-size: 18px;
-}
-
-.btn{
-    color:white !important;
- }   
-.btn3
-{
-width: 150px;
-height: 50px;
-background: #fff;
-border: none;
-border-radius: 5px;
-color: #fe4c1c;
-cursor: pointer;
-font-size: 16px;
-margin-top: 20px;
-}
-.image img
-{
-width: 800px;
-height: 500px;
-margin-top: 50px;
-animation: animate linear 2s infinite;
-}
-@keyframes animate
-{
-0%
-{
-transform: rotate(10deg);
-}
-50%
-{
-transform: rotate(5deg);
-}
-100%
-{
-transform: rotate(10deg);
-}
-}
-</style>
-<body>
-    <header>
-        <div class="container">
-            <div class="content">
-                <h1>Bienvenido a<br> <span>MyPymes App</span></h1>
-                <%= link_to "Iniciar Sesion", new_user_session_path, class:"btn btn-dark" %>
-                <%= link_to "Iniciar Sesion Empresa", new_owner_company_session_path, class:"btn btn-dark" %>
-                <%= link_to "Registrate", new_user_registration_path, class:"btn btn-dark" %>
-                <%= link_to "Registra tu empresa", new_owner_company_registration_path, class:"btn btn-dark mt-2" %>
-            </div>
-            <div class="image">
-                <img src="/images/pic.png">
+            <div class="profile-card-2"><img src="/images/makeup.jpg" class="img img-responsive">
+                <div class="profile-name">Belleza</div>
+                <div class="profile-username">Maquillaje, accesorios y más!</div>
             </div>
         </div>
-    </header>
-</body>
-</html>
- 
+		<div class="col-md-4">
+            <div class="profile-card-2"><img src="/images/tecnologia.jpg" class="img img-responsive">
+            <div class="profile-name">Tecnología</div>
+            <div class="profile-username">Computadores, tables y accesorios</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="profile-card-2"><img src="/images/comida.jpg" class="img img-responsive">
+            <div class="profile-name">Comida</div>
+            <div class="profile-username">Encuentra platos de todo tipo!</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="profile-card-2"><img src="/images/ellas.jpg" class="img img-responsive">
+            <div class="profile-name">Ropa</div>
+            <div class="profile-username">Para ellas</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="profile-card-2"><img src="/images/ellos.jpg" class="img img-responsive">
+            <div class="profile-name">Ropa</div>
+            <div class="profile-username">Para ellos</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="profile-card-2"><img src="/images/cuidado_personal.jpg" class="img img-responsive">
+            <div class="profile-name">Cuidado Personal</div>
+            <div class="profile-text">Encuentra todo lo que tenemos para ofrecerte en cuidado personal</div>
+        </div>
+    </div>
+<% else %>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    </head>
+    <style type="text/css">
+    *
+    .container
+    {
+    width: 1200px;
+    height: auto;
+    display: flex;
+    margin-top: 150px;
+    }
+    .container h1
+    {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 400;
+    padding-top: 100px;
+    }
+    .container span
+    {
+    font-weight: bold;
+    }
+    .container p
+    {
+    color: #fff;
+    line-height: 25px;
+    padding-top: 10px;
+    font-size: 18px;
+    }
+
+    .btn{
+        color:white !important;
+    }   
+    .btn3
+    {
+    width: 150px;
+    height: 50px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    color: #fe4c1c;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    }
+    .image img
+    {
+    width: 800px;
+    height: 500px;
+    margin-top: 50px;
+    animation: animate linear 2s infinite;
+    }
+    @keyframes animate
+    {
+    0%
+    {
+    transform: rotate(10deg);
+    }
+    50%
+    {
+    transform: rotate(5deg);
+    }
+    100%
+    {
+    transform: rotate(10deg);
+    }
+    }
+    </style>
+    <body>
+        <header>
+            <div class="container">
+                <div class="content">
+                    <h1>Bienvenido a<br> <span>MyPymes App</span></h1>
+                    <%= link_to "Iniciar Sesion", new_user_session_path, class:"btn btn-dark" %>
+                    <%= link_to "Iniciar Sesion Empresa", new_owner_company_session_path, class:"btn btn-dark" %>
+                    <%= link_to "Registrate", new_user_registration_path, class:"btn btn-dark" %>
+                    <%= link_to "Registra tu empresa", new_owner_company_registration_path, class:"btn btn-dark mt-2" %>
+                </div>
+                <div class="image">
+                    <img src="/images/pic.png">
+                </div>
+            </div>
+        </header>
+    </body>
+    </html>
 <% end %>

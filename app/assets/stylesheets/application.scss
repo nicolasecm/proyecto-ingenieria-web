@@ -1,0 +1,262 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree
+ *= require_self
+ */
+
+h1{
+    color:white;
+}
+
+.btn{
+    color: white !important;
+}
+
+.hr-white {
+    border: 1px solid #ffffff;
+    width: 100%;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.profile-card {
+  width: 100%;
+  min-height: 460px;
+  margin: auto;
+  margin-top: 70px;
+  box-shadow: 0px 8px 60px -10px rgba(13,28,39,0.6);
+  background: #fff;
+  border-radius: 12px;
+  max-width: 1500px;
+  position: relative;
+
+  &.active {
+    .profile-card__cnt {
+      filter: blur(6px);
+    }
+
+    .profile-card-message,
+    .profile-card__overlay {
+      opacity: 1;
+      pointer-events: auto;
+      transition-delay: .1s;
+    }
+
+    .profile-card-form {
+      transform: none;
+      transition-delay: .1s;
+    }
+  }
+
+  &__img {
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 4;
+    box-shadow: 0px 5px 50px 0px rgb(108, 68, 252), 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
+
+    @media screen and (max-width: 576px) {
+      width: 120px;
+      height: 120px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+  }
+
+  &__cnt {
+    margin-top: -35px;
+    text-align: center;
+    padding: 0 20px;
+    padding-bottom: 40px;
+    transition: all .3s;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 24px;
+    color: #6944ff;
+    margin-bottom: 15px;
+  }
+
+  &__txt {
+    font-size: 25px;
+    font-weight: 500;
+    color: #324e63;
+    margin-bottom: 15px;
+
+    strong {
+      //color: #ff2846;
+      font-weight: 700;
+    }
+
+  }
+
+  &-loc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  &-inf {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 35px;
+
+    &__item {
+      padding: 10px 35px;
+      min-width: 150px;
+
+      @media screen and (max-width: 768px) {
+        padding: 10px 20px;
+        min-width: 120px;
+      }
+
+    }
+
+    &__title {
+      font-weight: 700;
+      font-size: 27px;
+      //color: #6944ff;
+      color: #324e63;
+    }
+
+    &__txt {
+      font-weight: 500;
+      margin-top: 7px;
+    }
+
+  }
+
+  &-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+    @media screen and (max-width: 576px) {
+      flex-wrap: wrap;
+    }
+
+  }
+
+  &-message {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 130px;
+    padding-bottom: 100px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+  }
+
+  &-form {
+    box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 35px;
+    transform: scale(.8);
+    position: relative;
+    z-index: 3;
+    transition: all .3s;
+
+    @media screen and (max-width: 768px) {
+      max-width: 90%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 576px) {
+      padding: 20px;
+    }
+
+    &__bottom {
+      justify-content: space-between;
+      display: flex;
+
+      @media screen and (max-width: 576px) {
+        flex-wrap: wrap;
+      }
+
+    }
+
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    height: 210px;
+    margin-bottom: 20px;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: #324e63;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+    outline: none;
+    transition: all .3s;
+
+    &:focus {
+      outline: none;
+      border-color: #8a979e;
+    }
+
+  }
+
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: rgba(22, 33, 72, 0.35);
+    border-radius: 12px;
+    transition: all .3s;
+  }
+
+}

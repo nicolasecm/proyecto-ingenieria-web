@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   devise_for :owner_companies, path: 'users', controllers:{
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :companies
   resources :payment_methods
+  match 'products_company/:company_id', to: 'products#products_company', via: [:get, :post], as: :products_company
+  resources :products
 
   devise_scope :user do
     authenticated :user do
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root to: 'main#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

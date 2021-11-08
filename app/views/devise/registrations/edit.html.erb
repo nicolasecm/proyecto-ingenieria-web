@@ -1,43 +1,88 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+<% if user_signed_in? %>
+    <% usuario = current_user%>
+    <% type_profile = "usuario"%>
+<% elsif owner_company_signed_in? %>
+    <% usuario = current_owner_company%>
+    <% type_profile = "dueño de compañia"%>
+<% end %>
+<div class="profile-card">
+  <div class="profile-card__img">
+    <% if usuario.avatar.attached?%>
+      <%= image_tag usuario.avatar %>
+    <% else %>
+      <img src="/images/Avatar.png" alt="profile card">
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="profile-card__cnt">
+    <div class="profile-card__name"><%= usuario.first_name %> <%= usuario.last_name%></div>
+      <div class="profile-card-loc d-flex justify-content-start">
+        <span class="profile-card-loc__txt mx-3">
+          Editar perfil de <%= type_profile %> 
+        </span>
+      </div>  
+      <div class="d-flex justify-content-start" style="text-align:left !important;">
+        <div class="card-body ">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+            <div class="field mt-2">
+              <%= f.label :first_name, "Nombres"%><br />
+              <%= f.text_field :first_name, autocomplete: "first_name", class:"form-control" %>
+            </div>
 
-<h3>Cancel my account</h3>
+            <div class="field mt-2">
+              <%= f.label :last_name ,"Apellidos"%><br />
+              <%= f.text_field :last_name, autocomplete: "last_name", class:"form-control" %>
+            </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            </div>
 
-<%= link_to "Back", :back %>
+            <div class="field mt-2">
+              <%= f.label :username ,"Usuario"%><br />
+              <%= f.text_field :username, autocomplete: "username", class:"form-control" %>
+            </div>
+
+            <div class="field mt-2">
+              <%= f.label :avatar ,"Imagen de perfil"%><br />
+              <%= f.file_field :avatar, class:"form-control" %>
+            </div>
+
+            <div class="field mt-2">
+              <%= f.label :password %> <i>(Dejar en blanco si no la quieres cambiar)</i><br />
+              <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+            </div>
+
+            <div class="field mt-2">
+              <%= f.label :password_confirmation, "Confirmacion de contraseña" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%>
+            </div>
+
+            <div class="field mt-2">
+              <%= f.label :current_password, "Contraseña actual" %> <i>(necesitamos su contraseña actual para confirmar sus cambios)</i><br />
+              <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Actualizar perfil", class:"btn btn-success mt-2 "%>
+            </div>
+          <% end %>
+          <hr>
+          <h3>Cancelar mi cuenta</h3>
+
+          <p>Puedes borrar tu cuenta de MyPymes app en cualquier momento. Si cambias de parecer, es posible que no puedas recuperarla.
+          <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estas seguro?" }, method: :delete, class:"btn btn-danger"%></p>
+
+          <%= link_to 'Regresar', root_path, class:"btn btn-secondary mb-2"%>
+        </div>
+      </div>
+    </div>
+</div>
+

@@ -25,6 +25,7 @@
         <td><%= company.schedule %></td>
         <td><%= company.email %></td>
         <td><%= company.status == true ? "Activo" : "Inactivo" %></td>
+        <td><%= link_to 'Productos de la empresa', products_company_path(company_id: company.id), class:"btn btn-primary" %></td>
         <td><%= link_to 'Editar', edit_company_path(company), class:"btn btn-primary" %></td>
         <td><%= link_to 'Destruir', company, method: :delete, data: { confirm: '¿Estas seguro?' }, class:"btn btn-danger" %></td>
       </tr>

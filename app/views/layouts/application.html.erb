@@ -15,14 +15,14 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row flex-nowrap">
+      <div class="row flex-nowrap" style="margin-right: 0px important!;">
         
           <%if owner_company_signed_in?%>
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="col-auto col-md-3 col-xl-2 px-0 bg-dark">
               <%= render "partials/sidebar" %>
             </div>
           <%elsif user_signed_in?%>
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="col-auto col-md-3 col-xl-2 px-0 bg-dark">
               <%= render "partials/sidebar" %>
             </div>
           <%end%>
@@ -48,5 +48,11 @@ body
 width: 100vw;
 height: 100vh;
 background: linear-gradient(to right, rgb(55 31 169), rgb(32 171 246));
+overflow-x: hidden;
 }
+div.row{
+   margin-right: 0px;
+}
+
+
 </style>
