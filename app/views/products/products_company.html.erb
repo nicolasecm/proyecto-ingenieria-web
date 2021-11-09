@@ -18,14 +18,14 @@
   </thead>
 
   <tbody>
-    <% Product.where(company_id: companyfull.id).each do |category| %>
+    <% Product.where(company_id: companyfull.id).each do |product| %>
       <tr>
-        <td><%= category.name %></td>
-        <td><%= category.price %></td>
-        <td><%= category.status == true ? "Activo" : "Inactivo"%></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.status == true ? "Activo" : "Inactivo"%></td>
         <td><%= companyfull.name%></td>
-        <td><%= link_to 'Editar', edit_category_path(category) , class:"btn btn-primary"%></td>
-        <td><%= link_to 'Eliminar', category, method: :delete, data:{ confirm: '¿Estas seguro?' }, class:"btn btn-danger" %></td>
+        <td><%= link_to 'Editar', edit_product_path(product, company_id: params[:company_id]) , class:"btn btn-primary"%></td>
+        <td><%= link_to 'Eliminar', product, method: :delete, data:{ confirm: '¿Estas seguro?' }, class:"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
