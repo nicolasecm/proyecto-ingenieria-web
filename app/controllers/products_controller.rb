@@ -3,7 +3,15 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    if params[:q]
+      if params[:price_produt].present?
+        pricee_params = params[:price_produt].split(";")
+        params[:q][:price_gteq] = pricee_params[0].to_i
+        params[:q][:price_lteq] = pricee_params[1].to_i
+      end
+    end
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
   end
 
   # GET /products/1 or /products/1.json
@@ -32,7 +40,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
       if @product.update(product_params)
-        redirect_to products_company_path(company_id: params[:company_id]), notice: 'El producto ha sido actualizada satisfactoriamente' 
+        redirect_to products_company_path(company_id: params[:product][:company_id]), notice: 'El producto ha sido actualizada satisfactoriamente' 
       else
         render :edit, status: :unprocessable_entity 
       end
@@ -56,6 +64,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :price, :status, :company_id)
+      params.require(:product).permit(:name, :price, :status, :company_id, :image_product, :description)
     end
 end

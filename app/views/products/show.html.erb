@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="profile-card-show">
+<div class="row">
+  <div class="col-5">
+    <% if @product.image_product.attached?%>
+      <%=image_tag @product.image_product, width:"600", height:"600", class: "mx-2"%>
+    <% else %>
+      <img class='mx-2 my-2 img-thumbnail' src="/images/producto.png" width="600" height="600" />
+    <% end %>
+  </div>
+  <div class="col-7">
+    <div class="mt-2">
+      <p style="font-size:30px"><%= @product.name %></p>
+    </div>
+    <div class="mt-2">
+      <strong> $<%= @product.price %></strong>
+    </div>
+    <div class="mt-2">
+      <%= @product.description %>
+    </div>
+    <hr>
+    <div class="mt-2">
+      <%= link_to 'Regresar', products_path, class:"btn btn-danger"%>
+      <%= link_to 'Agregar al carrito', products_path, class:"btn btn-success"%>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @product.status %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @product.company_id %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+</div>

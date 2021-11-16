@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-
+  match 'shopping_carts/:user_id', to: 'shopping_carts#agregarObjetoCarrito', via: [:get, :post], as: :agregarObjetoCarrito
+  resources :shopping_carts
   devise_for :owner_companies, path: 'users', controllers:{
     sessions: "users/sessions",
     registrations: "users/registrations"

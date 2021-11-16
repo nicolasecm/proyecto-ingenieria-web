@@ -1,33 +1,121 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Status</th>
-      <th>Company</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<% if user_signed_in? %>
+    <% usuario = current_user%>
+<% elsif owner_company_signed_in? %>
+    <% usuario = current_owner_company%>
+<% end %>
+<div class="card">
+  <%= search_form_for @q do |f| %>
+  <div class="card-header">
+    <div class="card-title">
+      <h2>Filtro de productos</h2>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3">
+        <%= f.label :name_cont, "Nombre" %>
+        <%= f.search_field :name_cont, class:"form-control" %>
+      </div>
+      <div class="col-3">
+        <%= f.label :company_id_eq, "Compañia" %>
+        <%= f.select :company_id_eq, options_from_collection_for_select(Company.all, "id", "name", @q.company_id_eq), {include_blank: true}, {class: "form-select" } %>
+      </div>
+      <div class="col-3">
+        <%= f.label :company_category_id_eq, "Categoria" %>
+        <%= f.select :company_category_id_eq, options_from_collection_for_select(Category.all, "id", "name", @q.company_category_id_eq),{include_blank: true}, {class: "form-select" } %>
+      </div>
+      <div class="col-3">
+        <%= f.label :company_payment_method_id_eq, "Metodo de pago" %>
+        <%= f.select :company_payment_method_id_eq, options_from_collection_for_select(PaymentMethod.all, "id", "name", @q.company_payment_method_id_eq), {include_blank: true}, {class: "form-select" }%>
+      </div>
+      <div class="col-3">
+        <%= f.label :company_payment_method_id_eq, "Rango de precios" %>
+        <%= text_field_tag 'price_produt'%>
+        <%= f.hidden_field :price_gteq%>
+        <%= f.hidden_field :price_lteq%>
+      </div>
+    </div>
+    <div>
+      <%= f.submit "Buscar", class: "btn btn-success mt-2" %>
+      <%= link_to 'limpiar_filtro', "/products", class:"btn btn-warning mt-2 mx-2"%>
+    </div>
+    <div>
+      
+    </div>
+  </div>
+  <% end %>
+</div> 
+<div class='container-fluid '>
+  <div class="row d-flex justify-content-center">
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.status %></td>
-        <td><%= product.company_id %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="card col-4 mx-2 mt-5 cardasd"> 
+        <% if product.image_product.attached?%>
+            <%=image_tag product.image_product, width:"350", height:"350"%>
+        <% else %>
+            <img class='mx-auto img-thumbnail' src="/images/producto.png" width="350" height="350" />
+        <% end %>
+        <div class="card-body text-center mx-auto cbuf">
+            <div class='cvp'>
+                <h5 class="card-title font-weight-bold"><%=product.name%></h5>
+                <p class="card-text">$<%=product.price%></p> 
+                <%= link_to 'Ver informacion del producto', product , class:"btn cart px-auto"%>
+                <%= link_to 'Agregar al carrito', agregarObjetoCarrito_path(product_id: product.id,amount: 1, price: product.price, user_id: usuario.id), class: "btn cart px-auto" %>
+            </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<style>
+.details {
+    border: 1.5px solid grey;
+    color: #212121;
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 10px #212121
+}
 
-<br>
+.cart {
+    background-color: #212121;
+    color: white;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 900;
+    width: 100%;
+    height: 39px;
+    padding-top: 9px;
+    box-shadow: 0px 5px 10px #212121
+}
 
-<%= link_to 'New Product', new_product_path %>
+.cardasd {
+    width: fit-content
+}
+
+.cbuf {
+    width: fit-content
+}
+
+.btn {
+    border-radius: 0
+}
+
+.img-thumbnail {
+    border: none
+}
+
+.card {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    padding-bottom: 10px
+}
+</style>
+
+<script>
+$("#price_produt").ionRangeSlider(
+  {type: "double",
+    min: 0,
+    max: 1000000,
+    skin: "round",
+    grid: true}
+);
+</script>

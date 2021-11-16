@@ -33,7 +33,21 @@
     <nav class="navbar">
         <ul class="nav navbar-nav nav-pills flex-column mb-sm-auto">
             <% if user_signed_in? %>
-            
+                <li class="navbar-item">
+                    <a class="navbar-link" href="<%= root_url%>">
+                        <i class="align-middle fas fa-home"></i> <span class="ms-1 d-none d-sm-inline align-middle">Inicio</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a class="navbar-link" href="<%= products_url%>">
+                        <i class="align-middle fas fa-tags"></i> <span class="ms-1 d-none d-sm-inline align-middle">Productos</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a class="navbar-link" href="<%= shopping_carts_url%>">
+                        <i class="align-middle fas fa-shopping-cart"></i> <span class="ms-1 d-none d-sm-inline align-middle">Carrito de compras</span>
+                    </a>
+                </li>
             <% elsif owner_company_signed_in? %>
                 <li class="navbar-item">
                     <a class="navbar-link" href="<%= root_url%>">

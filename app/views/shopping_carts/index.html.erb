@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+    <% usuario = current_user%>
+<% elsif owner_company_signed_in? %>
+    <% usuario = current_owner_company%>
+<% end %>
+
+<% if user_signed_in? %>
+  <h1>Shopping Carts</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>User</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <% total = 0%>
+    <tbody>
+      <% ShoppingCart.where(user_id: usuario.id).each do |shopping_cart| %>
+        <tr>
+          <td><%= shopping_cart.product.name %></td>
+          <td><%= shopping_cart.amount %></td>
+          <td><%= shopping_cart.price %></td>
+          <td><%= shopping_cart.user.first_name %></td>
+          <td><%= link_to 'Show', shopping_cart %></td>
+          <td><%= link_to 'Edit', edit_shopping_cart_path(shopping_cart) %></td>
+          <td><%= link_to 'Destroy', shopping_cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% total += shopping_cart.price%>
+        </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+<%= total%>
+  <br>
+<% end %>
