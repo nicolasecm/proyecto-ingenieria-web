@@ -46,7 +46,8 @@
                             <h5 class="card-title font-weight-bold"><%=product.name%></h5>
                             <p class="card-text">$<%=product.price%></p> 
                             <%= link_to 'Ver informacion del producto', product , class:"btn cart px-auto"%>
-                            <%= link_to 'Agregar al carrito', product, method: :delete, data: { confirm: '¿Seguro quiere eliminar este objeto?' }, class: "btn cart px-auto" %>
+                            <%= link_to 'Agregar al carrito',  product, class: "btn cart px-auto" %>
+                            
                         </div>
                     </div>
                 </div>

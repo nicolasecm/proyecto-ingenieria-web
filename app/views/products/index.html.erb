@@ -59,7 +59,7 @@
                 <h5 class="card-title font-weight-bold"><%=product.name%></h5>
                 <p class="card-text">$<%=product.price%></p> 
                 <%= link_to 'Ver informacion del producto', product , class:"btn cart px-auto"%>
-                <%= link_to 'Agregar al carrito', agregarObjetoCarrito_path(product_id: product.id,amount: 1, price: product.price, user_id: usuario.id), class: "btn cart px-auto" %>
+                <%= link_to 'Agregar al carrito ', agregarObjetoCarrito_path(product_id: product.id,amount: 1, price: product.price, user_id: usuario.id), class: "btn cart px-auto" %>
             </div>
         </div>
       </div>
